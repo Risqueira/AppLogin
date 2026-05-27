@@ -1,5 +1,6 @@
 package br.ulbra.applogin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RegistrarActivity extends AppCompatActivity {
 
     EditText edNome, edUser, edPas1, edPas2;
-    Button btSalvar;
+    Button btSalvar, btVoltar;
     DBHelper db;
 
     protected void onCreate (Bundle savedInstanceState){
@@ -24,6 +25,7 @@ public class RegistrarActivity extends AppCompatActivity {
         edPas2 = (EditText) findViewById (R.id.edtSenha2);
 
         btSalvar = (Button) findViewById (R.id.btnSalvar);
+        btVoltar = (Button) findViewById(R.id.btVoltar);
 
         btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,5 +56,15 @@ public class RegistrarActivity extends AppCompatActivity {
             }
         });
 
+        btVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        RegistrarActivity.this,
+                        MainActivity.class
+                );
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -1,17 +1,21 @@
 package br.ulbra.applogin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
     EditText edLogin, edPass;
-    Button btTelaLogin;
+    Button btTelaLogin, btVoltar2;
     DBHelper db;
+
+
 
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate (savedInstanceState);
@@ -20,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         edLogin = (EditText) findViewById(R.id.edtInserirLogin);
         edPass = (EditText) findViewById(R.id.edtInserirSenha);
         btTelaLogin = (Button) findViewById(R.id.btnTelaLogin);
+        btVoltar2 = (Button) findViewById(R.id.btVoltar2);
 
         btTelaLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +53,17 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        btVoltar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(
+                        LoginActivity.this,
+                        MainActivity.class
+                );
+                startActivity(intent);
             }
         });
     }
